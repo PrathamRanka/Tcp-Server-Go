@@ -32,6 +32,7 @@ func main() {
   println("Write data failed:", err.Error())
   os.Exit(1)
  }
+ conn.CloseWrite()
  received := make([]byte, 4096)
  for {
   println("Reading data...")
