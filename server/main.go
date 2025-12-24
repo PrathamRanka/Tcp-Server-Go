@@ -25,7 +25,7 @@ func main(){
 }
 
 func hendleConnection(c net.Conn){
-	fmt.Printf("Serving %S", c.RemoteAddr().String())
+	fmt.Printf("Serving %s\n", c.RemoteAddr().String())
 	packet := make([]byte, 4096)
 	tmp := make([]byte,4096)
 	defer c.Close()
@@ -35,6 +35,7 @@ func hendleConnection(c net.Conn){
 			if err != io.EOF {
 				fmt.Println("read error:", err)
 			}
+			break
 		}
 		packet = append(packet, tmp...)
 	}
